@@ -230,7 +230,7 @@ function App() {
     name: "title",
     value: title,
     onChange: handleChange
-  }), /*#__PURE__*/_react["default"].createElement("label", {
+  }), /*#__PURE__*/_react["default"].createElement("br", null), /*#__PURE__*/_react["default"].createElement("br", null), /*#__PURE__*/_react["default"].createElement("label", {
     htmlFor: "content"
   }, "Tartalom:"), /*#__PURE__*/_react["default"].createElement("textarea", {
     id: "content",

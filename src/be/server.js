@@ -44,6 +44,7 @@ app.get('/posts', (req, res) => {
   Post.find({}, (err, posts) => {
     if (err) {
       // Ha hiba történt, akkor visszaküldjük a hibaüzenetet
+      console.log("Error: " +err);
       res.status(500).send(err);
     } else {
       // Ha nem volt hiba, akkor visszaküldjük a bejegyzéseket
@@ -56,6 +57,8 @@ app.get('/posts', (req, res) => {
 app.post('/posts', (req, res) => {
   // Létrehozunk egy új bejegyzést a kérésben kapott adatokkal
   const post = new Post(req.body);
+
+  console.log(body);
 
   // Elmentjük a bejegyzést az adatbázisba
   post.save((err, post) => {

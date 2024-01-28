@@ -2,7 +2,7 @@
 
 // Importáljuk a szükséges modulokat
 import React, {useState, useEffect} from 'react'; // A React keretrendszer
-import ReactDOM from 'react-dom'; // A React DOM kezelő
+import {createRoot} from 'react-dom/client';
 import axios from 'axios'; // A HTTP kérések küldésére
 import ReactPlayer from 'react-player'; // A videó lejátszására
 
@@ -76,6 +76,9 @@ function App() {
         image,
         video
       };
+
+      console.log("DEBUG");
+      console.log(newPost);
 
       // Elküldjük a bejegyzést a szervernek
       axios.post(`${serverUrl}/posts`, newPost)
@@ -185,7 +188,7 @@ function App() {
       <h2>Új bejegyzés létrehozása vagy szerkesztése</h2>
       <form onSubmit={editId ? handleUpdate : handleSubmit}>
         <label htmlFor="title">Cím:</label>
-        <input type="text" id="title" name="title" value={title} onChange={handleChange}/>
+        <input type="text" id="title" name="title" value={title} onChange={handleChange}/><br/><br/>
         <label htmlFor="content">Tartalom:</label>
         <textarea id="content" name="content" value={content} onChange={handleChange}></textarea><br/><br/>
         <label htmlFor="author">Szerző:</label>
@@ -216,4 +219,6 @@ function App() {
 }
 
 // Megjelenítjük az alkalmazást a böngészőben
-ReactDOM.render(<App />, document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App tab="home" />);
